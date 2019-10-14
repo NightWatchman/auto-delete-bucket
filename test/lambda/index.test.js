@@ -94,7 +94,7 @@ describe('#handler', () => {
       )
     })
 
-    it('should rsend a response with the same StackId as provided in the request', () => {
+    it('should send a response with the same StackId as provided in the request', () => {
       expect(sendResponse).toHaveBeenCalledWith(
         expect.objectContaining({ stackId: fx.create.StackId })
       )
@@ -212,7 +212,7 @@ describe('#handler', () => {
       )
     })
 
-    it('should rsend a response with the same StackId as provided in the request', () => {
+    it('should send a response with the same StackId as provided in the request', () => {
       expect(sendResponse).toHaveBeenCalledWith(
         expect.objectContaining({ stackId: fx.delete.StackId })
       )
