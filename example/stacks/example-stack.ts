@@ -1,5 +1,5 @@
 import { App, Stack, StackProps } from '@aws-cdk/core'
-import { AutoDeleteBucket } from '../../src/resource/auto-delete-bucket'
+import { DestroyableBucket } from '../../src/resource/destroyable-bucket'
 
 export class ExampleStack extends Stack {
   constructor(scope: App, id: string, props?: StackProps) {
@@ -10,8 +10,8 @@ export class ExampleStack extends Stack {
      * you will need to change the bucketName to something that nobody else is
      * using.
      */
-    new AutoDeleteBucket(this, 'example-autobucket-1', {
-      bucketName: 'autoexample-bucket1'
+    new DestroyableBucket(this, 'example-destroyablebucket-1', {
+      bucketName: 'destroyableexample-bucket1'
     })
 
     /**
@@ -19,8 +19,8 @@ export class ExampleStack extends Stack {
      * you will need to change the bucketName to something that nobody else is
      * using.
      */
-    new AutoDeleteBucket(this, 'example-autobucket-2', {
-      bucketName: 'autoexample-bucket2'
+    new DestroyableBucket(this, 'example-destroyablebucket-2', {
+      bucketName: 'destoryableexample-bucket2'
     })
   }
 }

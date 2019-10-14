@@ -1,25 +1,22 @@
 import { Code, Runtime, SingletonFunction } from '@aws-cdk/aws-lambda'
 import { Construct, RemovalPolicy, Duration } from '@aws-cdk/core'
-import {
-  CustomResource,
-  CustomResourceProvider
-} from '@aws-cdk/aws-cloudformation'
+import { CustomResource, CustomResourceProvider} from '@aws-cdk/aws-cloudformation'
 import { Bucket, BucketProps } from '@aws-cdk/aws-s3'
 import path = require('path')
 
-export class AutoDeleteBucket extends Bucket {
+export class DestroyableBucket extends Bucket {
   constructor(scope: Construct, id: string, props: BucketProps = {}) {
     super(scope, id, {
       ...props,
       removalPolicy: RemovalPolicy.DESTROY
     })
 
-    const lambda = new SingletonFunction(this, 'AutoBucketHandler', {
-      uuid: '7677dc81-117d-41c0-b75b-db11cb84bb70',
+    const lambda = new SingletonFunction(this, 'DestroyableBucketHandler', {
+      uuid: 'a8e853be-c06c-46c6-ab64-bd61819e992f',
       runtime: Runtime.NODEJS_10_X,
       code: Code.asset(path.join(__dirname, '../lambda')),
       handler: 'main.handler',
-      lambdaPurpose: 'AutoBucket',
+      lambdaPurpose: 'DestroyableBucket',
       timeout: Duration.minutes(15)
     })
 
@@ -28,9 +25,9 @@ export class AutoDeleteBucket extends Bucket {
     // allow the bucket contents to be read and deleted by the lambda
     this.grantReadWrite(lambda)
 
-    new CustomResource(this, 'AutoBucket', {
+    new CustomResource(this, 'DestroyableBucket', {
       provider,
-      resourceType: 'Custom::AutoDeleteBucket',
+      resourceType: 'Custom::DestroyableBucket',
       properties: {
         bucketName: this.bucketName
       }

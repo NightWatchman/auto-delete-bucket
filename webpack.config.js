@@ -19,7 +19,6 @@ module.exports = function(env) {
     module: {
       rules: [
         { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
-        // { test: /\.json$/, loader: 'json-loader' }
       ]
     },
     mode: 'none'
