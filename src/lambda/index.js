@@ -1,6 +1,6 @@
 import { sendResponse } from './send-response'
 import { emptyBucket } from './empty-bucket'
-import { RemovalPolicy } from '@aws-cdk/aws-s3'
+import { RemovalPolicy } from '@aws-cdk/core'
 
 export const handler = async event => {
   console.log(JSON.stringify(event, null, 2))

@@ -1,5 +1,5 @@
 import { Code, Runtime, SingletonFunction } from '@aws-cdk/aws-lambda'
-import { Construct, Duration } from '@aws-cdk/core'
+import { Construct, Duration, RemovalPolicy } from '@aws-cdk/core'
 import { CustomResource, CustomResourceProvider} from '@aws-cdk/aws-cloudformation'
 import { Bucket, BucketProps } from '@aws-cdk/aws-s3'
 import path = require('path')
@@ -27,7 +27,7 @@ export class DestroyableBucket extends Bucket {
       resourceType: 'Custom::DestroyableBucket',
       properties: {
         bucketName: this.bucketName,
-        removalPolicy: props.removalPolicy
+        removalPolicy: props.removalPolicy || RemovalPolicy.RETAIN
       }
     })
   }

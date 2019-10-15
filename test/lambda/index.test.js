@@ -195,7 +195,7 @@ describe('#handler', () => {
     })
   })
 
-  describe('when request type is Delete and the bucket exists', () => {
+  describe('when request type is Delete and the bucket exists and the retainPolicy is destroy', () => {
     beforeEach(async () => {
       await handler(fx.delete)
     })
@@ -234,6 +234,48 @@ describe('#handler', () => {
 
     it('should empty the bucket', () => {
       expect(emptyBucket).toHaveBeenCalled()
+    })
+  })
+
+  describe('when request type is Delete and the bucket exists and the retainPolicy is retain', () => {
+    beforeEach(async () => {
+      await handler(fx.delete_with_retain)
+    })
+
+    it('should return a SUCCESS response', () => {
+      expect(sendResponse).toHaveBeenCalledWith(
+        expect.objectContaining({ status: 'SUCCESS' })
+      )
+    })
+
+    it('should send a response with a generated physical resource id', () => {
+      expect(sendResponse).toHaveBeenCalledWith(
+        expect.objectContaining({ physicalResourceId: expect.any(String) })
+      )
+    })
+
+    it('should send a response with the same StackId as provided in the request', () => {
+      expect(sendResponse).toHaveBeenCalledWith(
+        expect.objectContaining({ stackId: fx.delete.StackId })
+      )
+    })
+
+    it('should send a response with the same LogicalResourceId as provided in the request', () => {
+      expect(sendResponse).toHaveBeenCalledWith(
+        expect.objectContaining({
+          logicalResourceId: fx.delete.LogicalResourceId
+        })
+      )
+    })
+
+    it('should send a response with the same RequestId as provided in the request', () => {
+      expect(sendResponse).toHaveBeenCalledWith(
+        expect.objectContaining({ requestId: fx.delete.RequestId })
+      )
+    })
+
+    it('should not empty the bucket', () => {
+      expect(emptyBucket).toHaveBeenCalledTimes(0)
     })
   })
 
