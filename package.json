@@ -1,6 +1,6 @@
 {
-  "name": "destroyable-bucket-temp",
-  "version": "0.9.0-RC2",
+  "name": "destroyable-bucket",
+  "version": "1.13.0",
   "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplised by emptying the bucket before destroying it.",
   "main": "dist/src/resource/destroyable-bucket.js",
   "types": "dist/src/resource/destroyable-bucket.d.ts",
@@ -23,7 +23,7 @@
     "bump:patch": "npm version patch -m 'Bump version'",
     "bump:minor": "npm version minor -m 'Bump version'",
     "bump:major": "npm version major -m 'Bump version'",
-    "compile": "tsc && webpack",
+    "build": "tsc && webpack",
     "cdk": "npm compile && cdk",
     "cdk:list": "npm compile && cdk list",
     "cdk:synth": "npm compile && cdk synth",
@@ -38,8 +38,8 @@
     "url": "https://github.com/mobileposse/auto-delete-bucket"
   },
   "dependencies": {
-    "aws-sdk": "^2.437.0",
-    "axios": "^0.18.1"
+    "aws-sdk": "^2.550.0",
+    "axios": "^0.19.0"
   },
   "devDependencies": {
     "@aws-cdk/aws-cloudformation": "^1.13.0",

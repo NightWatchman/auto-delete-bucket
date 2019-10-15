@@ -1,4 +1,4 @@
-import { App, Stack, StackProps } from '@aws-cdk/core'
+import { App, RemovalPolicy, Stack, StackProps } from '@aws-cdk/core'
 import { DestroyableBucket } from '../../src/resource/destroyable-bucket'
 
 export class ExampleStack extends Stack {
@@ -11,7 +11,8 @@ export class ExampleStack extends Stack {
      * using.
      */
     new DestroyableBucket(this, 'example-destroyablebucket-1', {
-      bucketName: 'destroyableexample-bucket1'
+      bucketName: 'destroyableexample-bucket1',
+      removalPolicy: RemovalPolicy.DESTROY
     })
 
     /**
@@ -20,7 +21,8 @@ export class ExampleStack extends Stack {
      * using.
      */
     new DestroyableBucket(this, 'example-destroyablebucket-2', {
-      bucketName: 'destoryableexample-bucket2'
+      bucketName: 'destoryableexample-bucket2',
+      removalPolicy: RemovalPolicy.RETAIN
     })
   }
 }

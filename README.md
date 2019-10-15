@@ -1,6 +1,6 @@
 ## What it does
 
-Creates an S3 bucket in Cloud Formation that will automatically be emptied **before** the bucket is destroyed by Cloud Formation.
+Creates an S3 bucket in Cloud Formation that, when used with `removalPolicy: RemovalPolicy.DESTROY`, can destroy the bucket even if it's not empty.
 
 ## How to use it
 
@@ -9,13 +9,13 @@ This is an [AWS CDK Construct](https://docs.aws.amazon.com/CDK/latest/userguide/
 Just install with npm:
 
 ```
-npm add auto-delete-bucket
+npm install destroyable-bucket
 ```
 
-And then require the construct and use it in your stack like any standard CDK resource!
+Then require the construct and use it in your stack like any standard CDK resource!
 
 ```js
-import { AutoDeleteBucket } from 'auto-delete-bucket'
+import { DestroyableBucket } from 'destroyable-bucket'
 
 export class ExampleStack extends Stack {
   constructor(scope: App, id: string, props?: StackProps) {
@@ -37,6 +37,9 @@ See the example directory for a complete CDK example. Be sure to change the `buc
 
 The bucket can be configured with any of the [standard CDK Bucket Properties](https://awslabs.github.io/aws-cdk/refs/_aws-cdk_aws-s3.html#bucketprops-interface).
 
+If `removalPolicy: RemovalPolicy.DESTROY` is used, the bucket will be emptied and deleted when the stack is destroyed.
+if `removalPolicy: RemovalPolicy.RETAIN` is used, the bucket will not be emptied, and will be orphaned when the stack is destroyed.
+
 ## Requirements
 
 - This is designed to work with AWS CDK but feel free to borrow the code if you want to create the custom CF resource some other way.
@@ -44,7 +47,7 @@ The bucket can be configured with any of the [standard CDK Bucket Properties](ht
 
 ## Versioning
 
-Version numbers are consistent with the major and minor version numbers of the corresponding AWS CDK version that this module is compatible with. In other words, version 1.1.X would be compatiable with aws-cdk 1.1.X. Patch versions will inevitably vary between the two project but as long as you are using a version consistent with the major and minor version of the CDK version you are using you should be good.
+Version numbers are consistent with the major and minor version numbers of the corresponding AWS CDK version that this module is compatible with. In other words, version 1.1.X would be compatiable with aws-cdk 1.1.X. Patch versions will inevitably vary between the two projects but as long as you are using a version consistent with the major and minor version of the CDK version you are using you should be good.
 
 ## Motivation
 
@@ -52,7 +55,8 @@ Cloud Formation will often fail to actually delete your S3 Bucket resources when
 
 > You can only delete empty buckets. Deletion fails for buckets that have contents.
 
-We find that in most of our use cases, we want to automatically delete the bucket and it's contents whenever the stack is deleted. Otherwise you will have a bunch of orphaned buckets to clean up manualy. The problem is even worse when you need to explicitly name the bucket (ex. for a website), because you won't be able to recreate the stack due to the fact that a bucket already exists with that name.
+We find that in our use cases, we want to be able to delete the bucket and it's contents whenever the stack is deleted,
+or alternatively to leave the bucket and it's contents in place, and orphan it when the stack is deleted.
 
 ## How it Works
 
@@ -61,51 +65,30 @@ Create a [custom resource](https://docs.aws.amazon.com/AWSCloudFormation/latest/
 ## Running Tests
 
 ```
-yarn test
+npm test
 ```
 
 ## Building the Example Stack
 
-The source code includes a reference CDK project inside the `example` directory which consists of a single `auto-delete-bucket`.
+The source code includes a reference CDK project inside the `example` directory which consists of a single `destroyable-bucket`.
 
 You can build the stack with:
 
 ```
-yarn cdk:deploy
+npm run cdk:deploy
 ```
 
 Go ahead and test this bucket out by adding some files to it. You can then test that everything will delete properly by destroying the stack (and bucket) with:
 
 ```
-yarn cdk:destroy
-```
-
-## Publish to NPM (Official maintainers only)
-
-Add npm user to your local machine (one time setup)
-
-```
-npm adduser
-```
-
-Push the release (you will be asked the new version)
-
-```
-npm login
-```
-
-Then provide username and password. Once authenticaated use the following command:
-
-```
-npm publish --access public
-```
-
-Push the tagged source back up to Github
-
-```
-git push --tags
+npm run cdk:destroy
 ```
 
 ## More Information
 
 See the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-or-empty-bucket.html) for more information on S3 and deleting bucket contents.
+
+## Acknowledgements
+
+This implementation was derived from the excellent https://github.com/mobileposse/auto-delete-bucket, with changes
+that make it possible to selectively retain the bucket and it's contents when the stack is destroyed, rather than always deleting it.
