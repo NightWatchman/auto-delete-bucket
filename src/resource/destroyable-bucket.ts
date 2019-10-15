@@ -26,7 +26,8 @@ export class DestroyableBucket extends Bucket {
       provider,
       resourceType: 'Custom::DestroyableBucket',
       properties: {
-        bucketName: this.bucketName
+        bucketName: this.bucketName,
+        removalPolicy: props.removalPolicy
       }
     })
   }

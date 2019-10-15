@@ -1,5 +1,6 @@
 import { sendResponse } from './send-response'
 import { emptyBucket } from './empty-bucket'
+import { RemovalPolicy } from '@aws-cdk/aws-s3'
 
 export const handler = async event => {
   console.log(JSON.stringify(event, null, 2))
@@ -21,7 +22,7 @@ export const handler = async event => {
 
   if (event.RequestType === 'Create' || event.RequestType === 'Update') {
     // Nothing to do here - create and update should always succeed
-  } else if (status === 'SUCCESS') {
+  } else if (status === 'SUCCESS' && event.ResourceProperties.RemovalPolicy === RemovalPolicy.DESTROY) {
     try {
       await emptyBucket(bucketName)
     } catch (err) {
