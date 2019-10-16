@@ -1,6 +1,6 @@
 {
   "name": "destroyable-bucket",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplised by emptying the bucket before destroying it.",
   "main": "dist/src/resource/destroyable-bucket.js",
   "types": "dist/src/resource/destroyable-bucket.d.ts",
@@ -15,7 +15,7 @@
     "construct",
     "non-empty"
   ],
-  "homepage": "https://github.com/mobileposse/auto-delete-bucket",
+  "homepage": "https://github.com/NightWatchman/destroyable-bucket",
   "scripts": {
     "test": "jest --silent",
     "local:create": "npm webpack && lambda-local -l dist/src/lambda/main.js -e test/fixtures/create.json",
@@ -35,7 +35,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mobileposse/auto-delete-bucket"
+    "url": "https://github.com/NightWatchman/destroyable-bucket"
   },
   "dependencies": {
     "aws-sdk": "^2.550.0",
