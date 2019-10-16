@@ -26,7 +26,7 @@ export class ExampleStack extends Stack {
      * you will need to change the bucketName to something that nobody else is
      * using.
      */
-    new AutoDeleteBucket(this, 'example-autobucket-1', {
+    new DestroyableBucket(this, 'example-autobucket-1', {
       bucketName: 'autoexample-bucket1'
     })
   }
@@ -37,8 +37,8 @@ See the example directory for a complete CDK example. Be sure to change the `buc
 
 The bucket can be configured with any of the [standard CDK Bucket Properties](https://awslabs.github.io/aws-cdk/refs/_aws-cdk_aws-s3.html#bucketprops-interface).
 
-If `removalPolicy: RemovalPolicy.DESTROY` is used, the bucket will be emptied and deleted when the stack is destroyed.
-if `removalPolicy: RemovalPolicy.RETAIN` is used, the bucket will not be emptied, and will be orphaned when the stack is destroyed.
+- If `removalPolicy: RemovalPolicy.DESTROY` is used, the bucket will be emptied and deleted when the stack is destroyed.
+- if `removalPolicy: RemovalPolicy.RETAIN` is used, the bucket will not be emptied, and will be orphaned when the stack is destroyed.
 
 ## Requirements
 
@@ -47,7 +47,7 @@ if `removalPolicy: RemovalPolicy.RETAIN` is used, the bucket will not be emptied
 
 ## Versioning
 
-Version numbers are consistent with the major and minor version numbers of the corresponding AWS CDK version that this module is compatible with. In other words, version 1.1.X would be compatiable with aws-cdk 1.1.X. Patch versions will inevitably vary between the two projects but as long as you are using a version consistent with the major and minor version of the CDK version you are using you should be good.
+Version numbers are consistent with the major and minor version numbers of the corresponding AWS CDK version that this module is compatible with. In other words, version 1.1.X would be compatiable with aws-cdk 1.1.X. Patch versions will inevitably vary between the two projects.
 
 ## Motivation
 
