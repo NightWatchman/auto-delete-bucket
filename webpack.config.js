@@ -1,8 +1,7 @@
 const path = require('path')
-const externals = require('webpack-node-externals')
-const webpack = require('webpack')
 
-module.exports = function(env) {
+
+module.exports = function() {
   return {
     entry: './src/lambda/index.js',
     output: {
@@ -18,7 +17,11 @@ module.exports = function(env) {
     },
     module: {
       rules: [
-        { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+        {
+          test: /\.js$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+        }
       ]
     },
     mode: 'none'
