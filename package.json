@@ -38,8 +38,7 @@
     "url": "https://github.com/NightWatchman/destroyable-bucket"
   },
   "dependencies": {
-    "aws-sdk": "^2.780.0",
-    "axios": "^0.19.2"
+    "aws-sdk": "^2.781.0"
   },
   "devDependencies": {
     "@aws-cdk/aws-cloudformation": "^1.17.1",
@@ -47,7 +46,7 @@
     "@aws-cdk/aws-s3": "^1.17.1",
     "@aws-cdk/core": "^1.17.1",
     "@types/jest": "^26.0.15",
-    "@types/node": "^12.19.2",
+    "@types/node": "^12.19.3",
     "aws-cdk": "^1.17.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
