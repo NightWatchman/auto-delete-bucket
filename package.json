@@ -1,6 +1,6 @@
 {
   "name": "destroyable-bucket",
-  "version": "1.15.0",
+  "version": "1.70.0",
   "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplised by emptying the bucket before destroying it.",
   "main": "dist/src/resource/destroyable-bucket.js",
   "types": "dist/src/resource/destroyable-bucket.d.ts",
@@ -38,29 +38,29 @@
     "url": "https://github.com/NightWatchman/destroyable-bucket"
   },
   "dependencies": {
-    "aws-sdk": "^2.578.0",
-    "axios": "^0.19.0"
+    "aws-sdk": "^2.780.0",
+    "axios": "^0.19.2"
   },
   "devDependencies": {
     "@aws-cdk/aws-cloudformation": "^1.17.1",
     "@aws-cdk/aws-lambda": "^1.17.1",
     "@aws-cdk/aws-s3": "^1.17.1",
     "@aws-cdk/core": "^1.17.1",
-    "@types/jest": "^24.0.23",
-    "@types/node": "^10.17.0",
-    "@types/uuid": "^3.4.6",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.19.2",
     "aws-cdk": "^1.17.1",
-    "babel-loader": "^8.0.5",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-transform-async-generator-functions": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^6.7.0",
-    "eslint-plugin-jest": "^23.0.4",
-    "jest": "^24.6.0",
-    "lambda-local": "^1.5.2",
+    "eslint": "^7.12.1",
+    "eslint-plugin-jest": "^24.1.0",
+    "jest": "^26.6.1",
+    "lambda-local": "^1.7.4",
     "node-fixtures": "^0.0.1",
-    "typescript": "^3.7.2",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "typescript": "^4.0.5",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   },
   "prettier": {
     "semi": false,
