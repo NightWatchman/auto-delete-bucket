@@ -3,6 +3,7 @@
 *.lock
 example
 node_modules/
+coverage/
 typings/
 sandbox/
 cdk.json
