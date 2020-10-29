@@ -128,7 +128,7 @@ describe('#handler', () => {
 
     it('should empty the bucket', async () => {
       await handler(fx.delete)
-      expect(emptyBucket).toHaveBeenCalled()
+      expect(emptyBucket).toHaveBeenCalledWith('autoexample-bucket1')
     })
   })
 
