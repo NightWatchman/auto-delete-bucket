@@ -2,7 +2,7 @@ import { emptyBucket } from './empty-bucket'
 import { RemovalPolicy } from '@aws-cdk/core'
 
 export const handler = async event => {
-  console.debug(JSON.stringify(event, null, 2))
+  console.debug('event: %o', event)
 
   /**
    * See the AWS documentation for more information passed in the request for a custom resource.
