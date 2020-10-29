@@ -1,6 +1,6 @@
 {
   "name": "destroyable-bucket",
-  "version": "1.70.0",
+  "version": "1.70.0-pre",
   "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplised by emptying the bucket before destroying it.",
   "main": "dist/src/resource/destroyable-bucket.js",
   "types": "dist/src/resource/destroyable-bucket.d.ts",
