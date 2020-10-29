@@ -7,7 +7,7 @@ module.exports = function() {
     output: {
       path: path.resolve(__dirname, './dist/src/lambda'),
       libraryTarget: 'commonjs2',
-      filename: '[name].js'
+      filename: 'index.js'
     },
     stats: 'minimal',
     target: 'node',
