@@ -82,8 +82,8 @@ export class DestroyableBucket extends Bucket {
       resourceType: 'Custom::DestroyableBucket',
       serviceToken,
       properties: {
-        bucketName: this.bucketName,
-        removalPolicy: props.removalPolicy || RemovalPolicy.RETAIN
+        BucketName: this.bucketName,
+        RemovalPolicy: props.removalPolicy || RemovalPolicy.RETAIN
       }
     })
   }
