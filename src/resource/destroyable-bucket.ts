@@ -13,68 +13,13 @@ export class DestroyableBucket extends Bucket {
         {
           Effect: 'Allow',
           Resource: this.bucketArn,
-          Action: 's3:DeleteObject'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:DeleteObjectTagging'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:DeleteObjectVersion'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:DeleteObjectVersionTagging'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:GetBucketLogging'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:GetBucketNotification'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:GetBucketObjectLockConfiguration'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:GetObject'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:GetObjectVersion'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
           Action: 's3:ListBucket'
         },
         {
           Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:ListBucketVersions'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:PutBucketLogging'
-        },
-        {
-          Effect: 'Allow',
-          Resource: this.bucketArn,
-          Action: 's3:PutObject'
-        },
+          Resource: `${this.bucketArn}/*`,
+          Action: 's3:*Object'
+        }
       ]
     })
 
