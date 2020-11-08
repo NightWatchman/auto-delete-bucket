@@ -1,7 +1,7 @@
 {
   "name": "destroyable-bucket",
-  "version": "1.70.1",
-  "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplised by emptying the bucket before destroying it.",
+  "version": "1.72.0",
+  "description": "Construct that allows the CDK to destroy a non-empty bucket when employing the `cdk destroy` command. This is accomplished by emptying the bucket before destroying it.",
   "main": "dist/src/resource/destroyable-bucket.js",
   "types": "dist/src/resource/destroyable-bucket.d.ts",
   "keywords": [
@@ -38,21 +38,21 @@
     "url": "https://github.com/NightWatchman/destroyable-bucket"
   },
   "dependencies": {
-    "aws-sdk": "^2.781.0"
+    "aws-sdk": "^2.787.0"
   },
   "devDependencies": {
-    "@aws-cdk/aws-s3": "^1.70.0",
-    "@aws-cdk/core": "^1.70.0",
+    "@aws-cdk/aws-s3": "^1.72.0",
+    "@aws-cdk/core": "^1.72.0",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.19.3",
-    "aws-cdk": "^1.70.0",
+    "aws-cdk": "^1.72.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-async-generator-functions": "^6.24.1",
     "babel-preset-env": "^1.7.0",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-plugin-jest": "^24.1.0",
-    "jest": "^26.6.1",
+    "jest": "^26.6.3",
     "lambda-local": "^1.7.4",
     "node-fixtures": "^0.0.1",
     "request": "^2.88.2",
