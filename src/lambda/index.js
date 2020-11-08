@@ -33,11 +33,17 @@ export const handler = async event => {
 
     case 'Delete':
       if (event.ResourceProperties.RemovalPolicy === RemovalPolicy.DESTROY) {
-        await emptyBucket(bucketName)
-        return {
-          PhysicalResourceId: physicalResourceId,
-          Reason: `Deleted files from bucket '${bucketName}' in preparation for bucket delete`
+        try {
+          await emptyBucket(bucketName)
+          return {
+            PhysicalResourceId: physicalResourceId,
+            Reason: `Deleted files from bucket '${bucketName}' in preparation for bucket delete`
+          }
+        } catch (err) {
+          console.error('delete bucket error: %o', err)
+          throw err
         }
+
       } else {
         return {
           PhysicalResourceId: physicalResourceId,
