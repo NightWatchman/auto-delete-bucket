@@ -1,3 +1,7 @@
+## Depreciated
+
+The CDK now has native support for this functionality via the `autoDeleteObjects` property, and this package is no longer necessary or supported.
+
 ## What it does
 
 Creates an S3 bucket in Cloud Formation that, when used with `removalPolicy: RemovalPolicy.DESTROY`, can destroy the bucket even if it's not empty.
